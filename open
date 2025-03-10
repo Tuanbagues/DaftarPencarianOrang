@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search People Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .person-list {
+            list-style: none;
+            padding: 0;
+        }
+        .person-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .person-list li:last-child {
+            border-bottom: none;
+        }
+        .send-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .send-info button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search People Online</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for people...">
+        </div>
+        <ul class="person-list" id="personList">
+            <li>John Doe</li>
+            <li>Jane Smith</li>
+            <li>Michael Johnson</li>
+            <li>Emily Davis</li>
+        </ul>
+        <div class="send-info">
+            <button onclick="sendInfo()">Send Info</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            let filter = this.value.toUpperCase();
+            let personList = document.getElementById('personList');
+            let persons = personList.getElementsByTagName('li');
+
+            for (let i = 0; i < persons.length; i++) {
+                let person = persons[i];
+                if (person.textContent.toUpperCase().indexOf(filter) > -1) {
+                    person.style.display = '';
+                } else {
+                    person.style.display = 'none';
+                }
+            }
+        });
+
+        function sendInfo() {
+            alert('Info sent!');
+        }
+    </script>
+</body>
+</html>
